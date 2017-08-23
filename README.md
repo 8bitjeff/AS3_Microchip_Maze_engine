@@ -48,65 +48,69 @@ The GameDataXML.as File  This class file is a wrapper for access to the basic 
 ```xml <tilesheetheight>640</tilesheetheight>```  The height of the imported tile sheet.
 ***** End of the Not recommended to be changed values *****
 
-<lives>5</lives> - Number of lives the player begins with
-<score>0</score> - The starting score for the player.
-<level>1</level> - The starting level for the player
-<numlevels>1</numlevels> The total number of levels for the game
-<dotscore>10</dotscore> The basic score for eating a dot.
-<erasertile>14</erasertile> The tile used to erase other tiles and display the background of the maze.
-<playeracceleration>4</playeracceleration>. The Speed in Pixels that the player will move.
+```xml <lives>5</lives>``` - Number of lives the player begins with
+```xml <score>0</score>``` - The starting score for the player.
+```xml <level>1</level>``` - The starting level for the player
+```xml <numlevels>1</numlevels>``` The total number of levels for the game
+```xml <dotscore>10</dotscore>``` The basic score for eating a dot.
+```xml <erasertile>14</erasertile>``` The tile used to erase other tiles and display the background of the maze.
+```xml <playeracceleration>4</playeracceleration>```. The Speed in Pixels that the player will move.
 
-The Player  This section of the GameDataXML.as is used to describe all of the player movement animations.  You have control over not just the left , right, up and down for the player, but also transition animations between left, right, up and down. In the example, those are set to just be a single tile, but they can be any number of tiles. 
+# The Player 
+This section of the GameDataXML.as is used to describe all of the player movement animations.  You have control over not just the left , right, up and down for the player, but also transition animations between left, right, up and down. In the example, those are set to just be a single tile, but they can be any number of tiles. 
 
-The basic movement animations for the player are set in the <lefttile></lefttile>, <righttile</righttile>,<uptile></uptile>and <downtile></downtile>. You can add as many tiles as needed to any of the directions. Currently there are just 2 animation frames for right:
-<righttile>0</righttile><righttile>1</righttile> To add more, simply add more <righttile></righttile> 
+The basic movement animations for the player are set in the ```xml <lefttile></lefttile>```, ```xml <righttile</righttile>```,```xml <uptile></uptile>``` and ```xml <downtile></downtile>```. You can add as many tiles as needed to any of the directions. Currently there are just 2 animation frames for right:
+```xml <righttile>0</righttile><righttile>1</righttile>```To add more, simply add more ```xml <righttile></righttile> ```
 
 There are two special tile attributes for the player:
-<levelout>32</levelout><levelout>33</levelout><levelout>0</levelout><levelout>1</levelout> - Specifies how to animate the player when the level is over.
+```xml<levelout>32</levelout><levelout>33</levelout><levelout>0</levelout><levelout>1</levelout>``` - Specifies how to animate the player when the level is over.
 
-<invfilter>73</invfilter><invfilter>74</invfilter><invfilter>75</invfilter><invfilter>76</invfilter> - Specifies a set of overlay tiles  to loop through and display on top of the player when he has eaten  protect (or invincible) power up.
+```xml<invfilter>73</invfilter><invfilter>74</invfilter><invfilter>75</invfilter><invfilter>76</invfilter>``` - Specifies a set of overlay tiles  to loop through and display on top of the player when he has eaten  protect (or invincible) power up.
 
 # Power Ups
 Power Ups are described with a series of attributes. 
-There are currently 5 types. The <title> attribute is used by the game engine for logic. 
+There are currently 5 types. The ```xml<title>``` attribute is used by the game engine for logic. 
 These should not be changed.
 
-The <type> is just a number that allows you to have multiple different versions of the same <title>. You CANNOT repeat numbers between power up titles, so DO NOT make a <type>1</type> for <title>attack1</title> and a <type>1<.type> for the <title>Freeze</title> power up.. ALL power ups must have a unique <type>, but multiple can have the same title.
+The ```xml<type>``` is just a number that allows you to have multiple different versions of the same ```xml<title>```. You CANNOT repeat numbers between power up titles, so DO NOT make a ```xml<type>1</type>```for ```xml<title>attack1</title>``` and a ```xml<type>1</type>``` for the ```xml<title>Freeze</title>``` power up.. ALL power ups must have a unique ```xml<type>```, but multiple can have the same title.
 
 The ONLY VALID TITLES are: freeze, attack1, bonusx, kill, and protect.
 You will see in the current file that there are no two power ups with the same Type or Title. This is just because the basic game is a simple implementation. To make a much more elaborate game with multiple levels and different values for the power-ups, you can add new types. Make sure to use consecutive, non-repeating numbers for the types.  The number is used in the TilesSheetDataXml.as file to describe the power up type for an individual tile.
 
 Valid Attributes for power-ups:
-<playeraccadjust></playeraccadjust> 0 = no freeze, 1=freeze enemy
+```xml<playeraccadjust></playeraccadjust>``` 0 = no freeze, 1=freeze enemy
 
-<playeracctimeadd></playeracctimeadd> - this is the amount of time in seconds to add to the freeze timerfor user. All current on-screen enemy will be frozen for that amount of time.
+```xml<playeracctimeadd></playeracctimeadd>``` - this is the amount of time in seconds to add to the freeze timerfor user. All current on-screen enemy will be frozen for that amount of time.
 
-<playerinvincibleadjust> </playerinvincibleadjust> true or false. This will control whether of not this power up will add time to the player protect timer
+```xml<playerinvincibleadjust> </playerinvincibleadjust>``` true or false. This will control whether of not this power up will add time to the player protect timer
 
-<playerinvincibletimeadd></playerinvincibletimeadd> How much time in seconds to add to the payer’s protect timer
+```xml<playerinvincibletimeadd></playerinvincibletimeadd>``` How much time in seconds to add to the payer’s protect timer
 
-<playereatenemyadjust> </playereatenemyadjust> true or false to control whether or not t his power up will allow the player to eat the other enemy (this is the attack power up)
+```xml<playereatenemyadjust> </playereatenemyadjust>``` true or false to control whether or not t his power up will allow the player to eat the other enemy (this is the attack power up)
 
-<playereatenemytimeadd>0</playereatenemytimeadd> Time to add to the eat (attack) timer
+```xml<playereatenemytimeadd>0</playereatenemytimeadd>``` Time to add to the eat (attack) timer
  
-<playerscoreadjust></playerscoreadjust> The score the player receives for eating this power up
-<playerbonusadjust></playerbonusadjust> The bonus points to player receives for eating this power up
-<playerbonustimeadjust></playerbonustimeadjust> The amount of time added to the player bonus timer for eating this power up
+```xml<playerscoreadjust></playerscoreadjust>``` The score the player receives for eating this power up
+```xml<playerbonusadjust></playerbonusadjust>``` The bonus points to player receives for eating this power up
+```xml<playerbonustimeadjust></playerbonustimeadjust>``` The amount of time added to the player bonus timer for eating this power up
 
-<playerkillallenemyadjust></playerkillallenemyadjust> true or false as to whether or not eating this power up will kill all of the currently on-screen enemy.
+```xml<playerkillallenemyadjust></playerkillallenemyadjust>``` true or false as to whether or not eating this power up will kill all of the currently on-screen enemy.
 
-Enemy Each enemy type is described in much the same way as the player and the power ups.  The <title> attribute for the enemy is just a notation for the game designer and does not in any way affect game play (unlike the power ups). The <type></type> is the most important attribute. It MUST be UNIQUE to the enemy (just like the Power Ups). 
-<Title>dumb1</Title> - Unlike Power-Ups, this is meaningless to game play, but can be used to help you remember what this enemy AI is like at a quick glance.
-<id> </id>  An id that will be used to add this enemy to the Level data files. Make them descriptive and UNIQUE. They can be anything.
-<downtile>,<uptile>,<righttile>, <lefttile> -  Just like the Player:  describes the series of animation tiles to loop through when the enemy is moving in that direction
-speed> - Controls the number of pixels this enemy will move on each frame.
-<intelligence> - A Number from 0 – 100 that represents the % chance that this enemy type will strictly follow the built-in maze-chase AI. A number from 30 – 90 is recommended as too low of a number will create a enemy that just randomly scrambles around the maze, too high a number and the enemy will freeze in place waiting for the player to make a move.
-<score>  The number of points the player receives for eating this enemy type.
-<fleefilter>80</fleefilter><fleefilter>81</fleefilter><fleefilter>82</fleefilter><fleefilter>83</fleefilter> - Like the player’s <invfilter>, these are tile frames that will overlay the enemy when the player is in chase mode.
+# Enemy
+Each enemy type is described in much the same way as the player and the power ups. 
+The ```xml<title>``` attribute for the enemy is just a notation for the game designer and does not in any way affect game play (unlike the power ups). The ```xml<type></type>``` is the most important attribute. It MUST be UNIQUE to the enemy (just like the Power Ups).
+```xml<Title>dumb1</Title>``` - Unlike Power-Ups, this is meaningless to game play, but can be used to help you remember what this enemy AI is like at a quick glance.
+```xml<id> </id>```  An id that will be used to add this enemy to the Level data files. Make them descriptive and UNIQUE. They can be anything.
+```xml<downtile>,<uptile>,<righttile>, <lefttile>``` -  Just like the Player:  describes the series of animation tiles to loop through when the enemy is moving in that direction
+```xml<speed>``` - Controls the number of pixels this enemy will move on each frame.
+```xml<intelligence>``` - A Number from 0 – 100 that represents the % chance that this enemy type will strictly follow the built-in maze-chase AI. A number from 30 – 90 is recommended as too low of a number will create a enemy that just randomly scrambles around the maze, too high a number and the enemy will freeze in place waiting for the player to make a move.
+```xml<score>```  The number of points the player receives for eating this enemy type.
+```xml<fleefilter>80</fleefilter><fleefilter>81</fleefilter><fleefilter>82</fleefilter><fleefilter>83</fleefilter>``` - Like the player’s ```xml<invfilter>```, these are tile frames that will overlay the enemy when the player is in chase mode.
 
-Explosions Only one explosion is implemented in this engine, but more can be added with GamePlay.as customizations.  
+# Explosions
+Only one explosion is implemented in this engine, but more can be added with GamePlay.as customizations.  
 
-<tile></tile> describes a series of tiles to loop through to create the explosion.  <type><type> a name that will be used internally to switch which explosion to show. Not currently implemented in  this engine as only one explosion is used.
+<tile></tile> describes a series of tiles to loop through to create the explosion. ```xml <type><type>``` a name that will be used internally to switch which explosion to show. Not currently implemented in  this engine as only one explosion is used.
 
 
 # The TileSheetDataXML.as File
@@ -137,27 +141,28 @@ eg – 0= this tile is NOT and enemy generator, 1= this tile is an enemyGenerato
 # The Level#DataL.as Files 
 The level data as files are wrappers for the level description attributes. The rows and columns of tile numbers that make up the level display.
 
-<framerate> - Deprecated. Do not use. This WAS used to control the frame rate of the level, but it resulted in strange behavior.
+```xml <framerate>``` - Deprecated. Do not use. This WAS used to control the frame rate of the level, but it resulted in strange behavior.
 <backgroundtile> The tile sheet id number of the tile to use as the background for the level. It will only be seen if a tile on top has transparency.
-<playerstartrow> The row, 0-14 to start the player
-<playerstartcol>  The column, 0-14 to start the player
+```xml <playerstartrow>```  The row, 0-14 to start the player
+```xml <playerstartcol>```   The column, 0-14 to start the player
 
-<enemytype num="1">EnemyRat</enemytype> This will add 1 EnemyRat (type) to the level. Remember, you can add your own enemy types and exchange them for this.
-<enemytype num="3">EnemyBat</enemytype> - Same as above, but it will add 3 EnemyBat objects.
-<bonustimelimit> The number of seconds to give the user to complete the level and still be awarded bonus time points.
-<timebonus> The amount of points to award the player for each bonus time second left on the clock at level end.
-<extramanamount> The total bonus needed to be achieved on each level to earn an extra man.
-<enemytoeatforbonusxplus> The number of enemy the player must eat in a row with out dying to earn an increase in his/her bonus multiplier.
-<attackbonusperkill> How much bonus to add to the player bonus total for each enemy eaten. This will be multiplied by the bonus multiplier.
-<enemystartFrameDelay> Time in seconds to delay the enemy start at level begin
-<enemyrestartFrameDelay>  Time in seconds for enemy to wait before re-spawn after being eaten. Make this unusually high for levels that you want to be easier. Make it shorter for more difficult levels. 
+```xml<enemytype num="1">EnemyRat</enemytype>```  This will add 1 EnemyRat (type) to the level. Remember, you can add your own enemy types and exchange them for this.
+```xml<enemytype num="3">EnemyBat</enemytype>``` - Same as above, but it will add 3 EnemyBat objects.
+```xml<bonustimelimit>``` The number of seconds to give the user to complete the level and still be awarded bonus time points.
+```xml<timebonus>```  The amount of points to award the player for each bonus time second left on the clock at level end.
+```xml<extramanamount>```  The total bonus needed to be achieved on each level to earn an extra man.
+```xml<enemytoeatforbonusxplus>```  The number of enemy the player must eat in a row with out dying to earn an increase in his/her bonus multiplier.
+```xml<attackbonusperkill>```  How much bonus to add to the player bonus total for each enemy eaten. This will be multiplied by the bonus multiplier.
+```xml<enemystartFrameDelay>```  Time in seconds to delay the enemy start at level begin
+```xml<enemyrestartFrameDelay>```   Time in seconds for enemy to wait before re-spawn after being eaten. Make this unusually high for levels that you want to be easier. Make it shorter for more difficult levels. 
 
 # Row and columns of level tile data:
+```xml
 <tilerow>
 <tilecol>8</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>6</tilecol><tilecol>14</tilecol><tilecol>7</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>9</tilecol>
 </tilerow>
-
-Each row in a level is create inside a <tilerow></tilerow> and should consist of 15 <tilecol></tilecol> nodes with the tile sheet id number inside.
+``` 
+Each row in a level is create inside a ```xml<tilerow></tilerow>``` and should consist of 15 ```xml<tilecol></tilecol>``` nodes with the tile sheet id number inside.
 
 
 # The tiles_final.png file
@@ -170,11 +175,11 @@ It is in the .fla library and exported with a class name of “tileSheet_png”.
 
 # How To Create a Basic Level
 Levels are basically a collection of 15 rows of data with 15 elements inside. They are represented this way in XML:
-
+```xml
 <tilerow>
 <tilecol>8</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>6</tilecol><tilecol>14</tilecol><tilecol>7</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>9</tilecol>
 </tilerow>
-
+```
 
 Each tilecol represents the id of a tile on the tiles_final.png file (in order from 0 – 319), The current example game only uses 112 tiles, but supports all 320. Also, the png file and the GameDataXML.as file can easily be modified to allow the use of many many more (up to the max size of a BitmpData object).
 
