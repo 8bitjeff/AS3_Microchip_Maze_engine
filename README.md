@@ -41,11 +41,11 @@ The GameDataXML.as File  This class file is a wrapper for access to the basic 
 
 # General Game Description
 ***** It is not recommended that the first 5 settings be modified. The Engine has not been tested with other values.
-<tilesize>32</tilesize>. This is the in width and height of all the tiles and animated characters in the game.  It is not recommended that his be changed.
-<screenwidth>480</screenwidth>. This is the width in pixels of the output game screen. The number of tiles that fit the screen will be screenwidth/tilesize. 
-<screenheight>480</screenheight>. Same as above, but for the screen height.
-<tilesheetwidth>512</tilesheetwidth> The width of the imported tile sheet (tiles_final.png)
-<tilesheetheight>640</tilesheetheight> The height of the imported tile sheet.
+```xml <tilesize>32</tilesize>``` This is the in width and height of all the tiles and animated characters in the game.  It is not recommended that his be changed.
+```xml <screenwidth>480</screenwidth>``` . This is the width in pixels of the output game screen. The number of tiles that fit the screen will be screenwidth/tilesize. 
+```xml <screenheight>480</screenheight>``` . Same as above, but for the screen height.
+```xml <tilesheetwidth>512</tilesheetwidth>```  The width of the imported tile sheet (tiles_final.png)
+```xml <tilesheetheight>640</tilesheetheight>```  The height of the imported tile sheet.
 ***** End of the Not recommended to be changed values *****
 
 <lives>5</lives> - Number of lives the player begins with
