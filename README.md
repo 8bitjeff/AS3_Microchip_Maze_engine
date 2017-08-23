@@ -3,14 +3,14 @@ Fully customizable "Pac-amn" style engine. Create mazes with tile sheets. See fu
 
 # Engine Instructions
 
-Micro Chip MazeEngine Documentation
+# Micro Chip Maze Engine Documentation
 
-Over view
+# Over view
 
 The Micro Chip Maze Engine is a tile-based Pacman style game engine written in AS3. It contains a number of gameplay enhancements over the original classic game. The engine was created to allow deployment as a single .swf file. For that reason, all assets are either embedded into the .fla file or are inside class wrapper files.  
 95% of the Engine can be configured by changing class files and the tiles png outside the .fla file. There are a few minor changes that need to be made to the .fla file.  The png file will need to be reimported into the .fla before it can be used.
 
-Engine Feature Set:
+# Engine Feature Set:
 
  Create an unlimited number of levels
 Once all levels are complete, they repeat on HARD level with everything speeded up
@@ -39,7 +39,7 @@ The GameDataXML.as File  This class file is a wrapper for access to the basic 
 - Describes the power up types and tiles used for animation
 - Describes the explosion animation used for enemy kills
 
-General Game Description
+# General Game Description
 ***** It is not recommended that the first 5 settings be modified. The Engine has not been tested with other values.
 <tilesize>32</tilesize>. This is the in width and height of all the tiles and animated characters in the game.  It is not recommended that his be changed.
 <screenwidth>480</screenwidth>. This is the width in pixels of the output game screen. The number of tiles that fit the screen will be screenwidth/tilesize. 
@@ -66,7 +66,7 @@ There are two special tile attributes for the player:
 
 <invfilter>73</invfilter><invfilter>74</invfilter><invfilter>75</invfilter><invfilter>76</invfilter> - Specifies a set of overlay tiles  to loop through and display on top of the player when he has eaten  protect (or invincible) power up.
 
- Power Ups
+# Power Ups
 Power Ups are described with a series of attributes. 
 There are currently 5 types. The <title> attribute is used by the game engine for logic. 
 These should not be changed.
@@ -109,7 +109,7 @@ Explosions Only one explosion is implemented in this engine, but more can be a
 <tile></tile> describes a series of tiles to loop through to create the explosion.  <type><type> a name that will be used internally to switch which explosion to show. Not currently implemented in  this engine as only one explosion is used.
 
 
-The TileSheetDataXML.as File
+# The TileSheetDataXML.as File
 This class file is a wrapper for a description of each tile in the tiles_final.png file.
 The tiles are listed in order from 0 through  the end of the tile sheet. They are NOT listed as rows and columns like level data would be listed. The tiles are loaded into a single dimensional array in the GamePlay.as class that is easily accessed by the engine the subscribe number of the tile id (see below). 
 
@@ -134,7 +134,7 @@ aList – if this tile is animated, you will need to fill in a comma delimited l
 eg – 0= this tile is NOT and enemy generator, 1= this tile is an enemyGenerator
 
 
-The Level#DataL.as Files 
+# The Level#DataL.as Files 
 The level data as files are wrappers for the level description attributes. The rows and columns of tile numbers that make up the level display.
 
 <framerate> - Deprecated. Do not use. This WAS used to control the frame rate of the level, but it resulted in strange behavior.
@@ -152,7 +152,7 @@ The level data as files are wrappers for the level description attributes. The r
 <enemystartFrameDelay> Time in seconds to delay the enemy start at level begin
 <enemyrestartFrameDelay>  Time in seconds for enemy to wait before re-spawn after being eaten. Make this unusually high for levels that you want to be easier. Make it shorter for more difficult levels. 
 
-Row and columns of level tile data:
+# Row and columns of level tile data:
 <tilerow>
 <tilecol>8</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>6</tilecol><tilecol>14</tilecol><tilecol>7</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>2</tilecol><tilecol>9</tilecol>
 </tilerow>
@@ -160,7 +160,7 @@ Row and columns of level tile data:
 Each row in a level is create inside a <tilerow></tilerow> and should consist of 15 <tilecol></tilecol> nodes with the tile sheet id number inside.
 
 
-The tiles_final.png file
+# The tiles_final.png file
 This is just a plan old png file with a transparent background broken up into rows of 16 32x32 tiles. If you start counting in the upper left-hand tile as 0, it will correspond directly to the id number in the TileSheetDataXML.as file
 
 It has the capacity to hold 320 tiles (16x20) 32x32 tiles.
@@ -168,7 +168,7 @@ It has the capacity to hold 320 tiles (16x20) 32x32 tiles.
 It is in the .fla library and exported with a class name of “tileSheet_png”.
 
 
-How To Create a Basic Level
+# How To Create a Basic Level
 Levels are basically a collection of 15 rows of data with 15 elements inside. They are represented this way in XML:
 
 <tilerow>
@@ -203,10 +203,6 @@ Click on save
 A dialog box will come up and ask you “Adjust Exported Values By”. Enter -1 and click on [ok]. This will re-adjust the data back to start at 0 and negate the tile 1 eraser that mappy added to the data.
 You are now ready to add a new level to the game. 
 
-
-
-
-
 How to add levels to the engine
 
 How to add a new level to the game.
@@ -220,12 +216,10 @@ Save the file
 In the GamePlay.as file, you will need to add and instance of the new level.
 On about line 148, add in this line:  var level2DataXML:Level2DataXML; Note that I have already added level 2 and level 3, but you will need to do so for levels 4 and beyond.
 
-Testing your level.
+# Testing your level.
 1. Change the GameDataXML.as file entry for <level>1</level> to <level>2</level> (or what ever the new level number is and test) by exporting the movie.
 
-
-
-Other changes the can be made in the .Fla
+# Other changes the can be made in the .Fla
 
 The .fla game file has a few more things that can/should be edited to fully change the game.
 
